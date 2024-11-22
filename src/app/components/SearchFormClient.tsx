@@ -8,21 +8,12 @@ interface SearchFormClientProps {
   handleSearch: (formData: FormData) => Promise<Manga[]>;
 }
 
-const SearchFormClient: React.FC<SearchFormClientProps> = ({
-  handleSearch,
-}) => {
+const SearchFormClient: React.FC<SearchFormClientProps> = () => {
   const [mangas, setMangas] = useState<Manga[]>([]);
-
-  async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    const result = await handleSearch(formData);
-    setMangas(result);
-  }
 
   return (
     <div className="max-w-full mt-10 p-6 bg-slate-300 rounded-lg shadow-md">
-      <form onSubmit={onSubmit} className="space-y-4 text-left">
+      <form onSubmit={() => undefined} className="space-y-4 text-left">
         <div>
           <label
             htmlFor="query"

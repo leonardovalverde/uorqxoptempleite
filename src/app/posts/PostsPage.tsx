@@ -1,15 +1,10 @@
 "use server";
 
-import { addPost } from "./action";
-import { getPosts } from "./PostList";
-
 async function PostsPage() {
-  const posts = await getPosts();
-
   return (
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-4">Posts</h1>
-      <form action={addPost} className="mb-4">
+      <form action="/" className="mb-4">
         <input
           name="title"
           placeholder="Nome do Post"
@@ -23,13 +18,7 @@ async function PostsPage() {
           Adicionar Post
         </button>
       </form>
-      <ul>
-        {posts.map((post: { id: number; title: string }) => (
-          <li key={post.id} className="border-b border-gray-200 py-2">
-            {post.title}
-          </li>
-        ))}
-      </ul>
+      <ul></ul>
     </div>
   );
 }
